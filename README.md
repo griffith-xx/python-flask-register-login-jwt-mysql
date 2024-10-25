@@ -30,3 +30,12 @@ python -m venv venv
 ```
 pip install -r requirements.txt
 ```
+
+4. **กำหนด Environment ในไฟล์ .env**
+```
+MYSQL_HOST=your_host
+MYSQL_USER=your_username
+MYSQL_PASSWORD=your_password
+MYSQL_DB=your_database
+SECRET_KEY=your_secret_key
+```
