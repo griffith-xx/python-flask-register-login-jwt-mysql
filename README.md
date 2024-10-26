@@ -3,42 +3,35 @@
 โปรเจกต์นี้เป็นตัวอย่างระบบลงทะเบียนผู้ใช้และเข้าสู่ระบบ โดยใช้ Flask สำหรับ Backend, JWT (JSON Web Token) สำหรับการยืนยันตัวตน และ MySQL ในการจัดเก็บข้อมูลผู้ใช้
 
 ## ฟีเจอร์
-
 - ลงทะเบียนผู้ใช้: บันทึกข้อมูลผู้ใช้ใหม่ด้วยชื่อผู้ใช้ อีเมล และรหัสผ่าน
 - เข้าสู่ระบบ: ตรวจสอบข้อมูลผู้ใช้ และส่งคืน JWT Token
 - บันทึกข้อมูลใน MySQL: เก็บข้อมูลผู้ใช้ในฐานข้อมูล MySQL
 - การแฮชรหัสผ่าน: ปกป้องรหัสผ่านด้วยการแฮช (bcrypt)
 
 ## สิ่งที่ต้องมี
-
 - Python 3.x
 - MySQL Server
 - pip (ตัวจัดการแพ็กเกจของ Python)
 
 ## การติดตั้ง
-
 1. **โคลนโปรเจกต์นี้:**
-
 ```
 git clone https://github.com/griffith-xx/python-flask-register-login-jwt-mysql
 cd python-flask-register-login-jwt-mysql
 ```
 
 2. **สร้าง Virtual Environment:**
-
 ```
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
 3. **ติดตั้ง Dependencies:**
-
 ```
 pip install -r requirements.txt
 ```
 
 4. **กำหนด Environment ในไฟล์ .env**
-
 ```
 MYSQL_HOST=your_host
 MYSQL_USER=your_username
@@ -48,9 +41,8 @@ SECRET_KEY=your_secret_key
 ```
 
 5. **สร้าง Models**
-   โมเดล users ที่มี id user email และ password
-
-```
+โมเดล users ที่มี id user email และ password
+```python
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -63,9 +55,8 @@ class User(db.Model):
 ```
 
 6. **สร้าง Routes**
-   สร้าง route สองเส้น register สำหรับบันถึก user ลง database และ login เพื่อทำการส่ง jwt กลับไปคืนไปให้ frontend
-
-```
+สร้าง route สองเส้น register สำหรับบันถึก user ลง database และ login เพื่อทำการส่ง jwt กลับไปคืนไปให้ frontend
+```python
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -105,11 +96,9 @@ def login():
     else:
         return jsonify({"msg": "Invalid email or password"}), 401
 ```
-
 7. **สร้าง App**
-   import routes มา register ลง ใน app
-
-```
+import routes มา register ลง ใน app
+```python
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from models import db
@@ -136,7 +125,6 @@ if __name__ == "__main__":
 ```
 
 8. **รัน App**
-
-```
+```python
 python app.py
 ```
