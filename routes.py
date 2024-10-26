@@ -11,7 +11,7 @@ def register():
     data = request.get_json()
     username = data["username"]
     email = data["email"]
-    password = generate_password_hash(data["password"], method="sha256")
+    password = generate_password_hash(data["password"], method="pbkdf2:sha256")
     if (
         User.query.filter_by(username=username).first()
         or User.query.filter_by(email=email).first()
