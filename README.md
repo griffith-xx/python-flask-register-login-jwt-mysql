@@ -130,7 +130,7 @@ python app.py
 ```
 
 **ตัวอย่าง request register**
-```json
+```
 {
     email:'johndoe@gmail.com'
     password:'johndoe123456'
@@ -139,7 +139,7 @@ python app.py
 ```
 
 **ตัวอย่าง request login**
-```json
+```
 {
     email:'johndoe@gmail.com'
     password:'johndoe123456'
