@@ -48,7 +48,6 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
-    __tablename__ = 'users' 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -128,4 +127,21 @@ if __name__ == "__main__":
 8. **รัน App**
 ```python
 python app.py
+```
+
+**ตัวอย่าง request register**
+```json
+{
+    email:'johndoe@gmail.com'
+    password:'johndoe123456'
+    username:'johndoe'
+}
+```
+
+**ตัวอย่าง request login**
+```json
+{
+    email:'johndoe@gmail.com'
+    password:'johndoe123456'
+}
 ```
